@@ -1,6 +1,7 @@
-class CommentsController < ApplicationController
+# frozen_string_literal: true
 
-  http_basic_authenticate_with name: "dhh", password: "secret", only: :destroy
+class CommentsController < ApplicationController # rubocop:todo Style/Documentation
+  http_basic_authenticate_with name: 'dhh', password: 'secret', only: :destroy
 
   def create
     @article = Article.find(params[:article_id])
@@ -16,7 +17,8 @@ class CommentsController < ApplicationController
   end
 
   private
-    def comment_params
-      params.require(:comment).permit(:commenter, :body, :status)
-    end
+
+  def comment_params
+    params.require(:comment).permit(:commenter, :body, :status)
+  end
 end
